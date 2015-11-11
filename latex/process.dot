@@ -1,0 +1,54 @@
+digraph tasks {
+/*size="4,4"*/
+/*headers*/
+node [shape=plaintext,fontcolor=black];
+"6th" -> "7th" -> "8th" ->"..."-> "9th" -> "10th"
+
+/*current task(s)*/
+node[color=black,shape=box,style=dotted];
+"Highlight query results"
+"Server XPath returns ids"
+
+
+/* Completed tasks */
+node [shape=plaintext,fontcolor="#999999"];
+
+{rank = same; "6th"; "Find suitable XML"; "Make basic HTML";"Install Server";"Milestone 2 Report";}
+{rank = same; "Parse XPath";"Serve basic HTML"}	
+{rank = same; "7th"; "Status Report 1";}
+{rank = same; "8th"; "Parse XML";  "Status Report 2";}
+{rank = same; "9th"; "Serve dynamic HTML/XML"; "Status Report 3"}
+{rank = same; "XMLHttpReq"; "..."}
+
+/* Completed to any connections*/
+node [shape=plaintext,fontcolor=black];
+edge [color="#999999"];
+"Make basic HTML"->"Parse XPath"
+"Find suitable XML"->"Parse XML"
+"Make basic HTML"->"Serve basic HTML"
+"Serve basic HTML"->"XMLHttpReq"
+
+"Install Server"->"Serve basic HTML"
+"Install Server"->"XMLHttpReq"
+"Parse XPath"->"XMLHttpReq"
+"Milestone 2 Report" -> "Status Report 1"
+"Parse XPath"->"Highlight query results"
+"Status Report 1" -> "Status Report 2"
+"Status Report 2" -> "Status Report 3"
+"Status Report 3" -> "Project Delivery"
+"XMLHttpReq"->"Serve dynamic HTML/XML"
+"Parse XML"->"Server XPath returns ids"
+"Serve dynamic HTML/XML"->"Highlight query results"
+
+/*Uncompleted tasks*/
+edge [color=black];
+
+
+	/* Due Dates: */
+	{rank = same; "10th"; "Project Delivery"}
+
+	/* Connections */
+	"Server XPath returns ids"->"Highlight query results"
+	"Highlight query results"->"Project Delivery"
+}
+

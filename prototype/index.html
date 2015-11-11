@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hapless Path</title>
+<script type="text/javascript" src="OrgChartNode.js"></script>
+<script type="text/javascript" src="hapless.js"></script>
+<link type="text/css" href="OrgChartNode.css" rel="stylesheet"/>
+<script type="text/javascript">//<![CDATA[
+			var chart;
+			function documentLoaded(){
+				var config;
+				var imgStart = "<img border=\"0\" src=\"";
+				var imgEnd = "\"/>";
+				var imgUriStart = "http://www.regering.nl/pix/bewindslieden_overzicht/";
+				var minImgStart = imgStart + imgUriStart;
+				var uriStart = "http://www.regering.nl/bewindslieden/kabinet/";
+				
+				config = {
+					id: "orgchart1"
+				,	root: {
+						label: imgStart + "http://www.koninklijkhuis.nl/dsc?noblob=true&s=obj&c=getsubobject&versionid=3&dsname=minazkh&objectid=4791&subobjectname=627141880.jpg\" height=\"160\" width=\"236\"/>"
+					,	link:{ href: "http://www.koninklijkhuis.nl/content.jsp?objectid=4347", target: "_detail"}
+					,	childNodes: [
+						{type:orgchart.Node.prototype.TYPE_SPACE
+						,childNodes:[
+							{label: minImgStart + "minbos_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minbos.jsp", target: "_detail"}
+							,state: orgchart.Node.prototype.STATE_COLLAPSED
+							,nodeBody:{
+								style:{
+									backgroundColor:"red"
+								}
+							}
+							,childNodes:[
+								{label: minImgStart + "minterhorst_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "minterhorst.jsp", target: "_detail"}}
+							,	{label: minImgStart + "minplasterk_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "minplasterk.jsp", target: "_detail"}}
+							,	{label: minImgStart + "mincramer_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "mincramer.jsp", target: "_detail"}}
+							,	{label: minImgStart + "minkoenders_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "minkoenders.jsp", target: "_detail"}}
+							,	{label: minImgStart + "minvogelaar_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "minvogelaar.jsp", target: "_detail"}}
+							]}
+						]}
+					,	{label: minImgStart + "mpbalkenende_mo.jpg" + imgEnd		
+						,link:{ href: uriStart + "mpbalkenende.jsp", target: "_detail"}
+						,state: orgchart.Node.prototype.STATE_COLLAPSED
+						,nodeBody:{
+							style:{
+								backgroundColor:"green"
+							}
+						}
+						,childNodes:[
+							{label: minImgStart + "minverhagen_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minverhagen.jsp", target: "_detail"}}
+						,	{label: minImgStart + "minhirschballin_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minhirschballin.jsp", target: "_detail"}}
+						,	{label: minImgStart + "mineurlings_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "mineurlings.jsp", target: "_detail"}}
+						,	{label: minImgStart + "minvanderhoeven_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minvanderhoeven.jsp", target: "_detail"}}
+						,	{label: minImgStart + "minverburg_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minverburg.jsp", target: "_detail"}}
+						,	{label: minImgStart + "mindonner_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "mindonner.jsp", target: "_detail"}}
+						,	{label: minImgStart + "minklink_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minklink.jsp", target: "_detail"}}
+						]}
+					,	{type:orgchart.Node.prototype.TYPE_SPACE
+						,childNodes:[
+							{label: minImgStart + "minrouvoet_mo.jpg" + imgEnd		
+							,link:{ href: uriStart + "minrouvoet.jsp", target: "_detail"}
+							,state: orgchart.Node.prototype.STATE_COLLAPSED
+							,nodeBody:{
+								style:{
+									backgroundColor:"blue"
+								}
+							}
+							,childNodes:[							
+								{label: minImgStart + "minvanmiddelkoop_mo.jpg" + imgEnd		
+								,link:{ href: uriStart + "minvanmiddelkoop.jsp", target: "_detail"}}
+							]}
+						]}
+					]}
+				}
+				chart = new orgchart.Chart(config);
+			}
+		//]]></script>
+</head>
+<body onload="documentLoaded()">
+<p>Welcome to Hapless Path! Choose an XML file, then get started learning XPath!</p>
+<form>
+<label for="xml">Choose an XML file:</label>
+<select name="xml">
+	<option>Trees</option>
+	<option>Organization</option>
+	<option>Species</option>
+	<option>Courses</option>
+</select>
+<label for="xpath">Input an XPath Expression</label>
+<input type="text" name="xpath" onkeypress="return xpathAddition(event)"/>
+<div id="xpathquery" class="XPath Query">
+	<div id="establishedtokens"></div>
+	<div id="tokeninprogress"></div>
+</div>
+<br />
+Tree goes here...
+		<div id="orgchart1"/>
+		<div id="orgchart2"/>
+</form>
+</body>
+</html>

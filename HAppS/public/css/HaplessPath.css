@@ -1,0 +1,19 @@
+a{
+	text-decoration:none;
+	
+	
+	border-bottom:none;
+}
+.subquery{border-bottom: 3px solid black;}
+
+.subquery1{border-bottom-color: red;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery2{border-bottom-color: green;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery3{border-bottom-color: grey;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery4{border-bottom-color: brown;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery5{border-bottom-color: cyan;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery6{border-bottom-color: purple;border-bottom-width: 3px;border-bottom-style: solid;}
+.subquery7{border-bottom-color: black;border-bottom-width: 3px;border-bottom-style: solid;}
+
+#xpathquery{
+	fint-size: 200%;	
+}

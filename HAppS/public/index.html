@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hapless Path</title>
+<script type="text/javascript" src="js/OrgChartNode.js"></script>
+<script type="text/javascript" src="js/hapless.js"></script>
+<link type="text/css" href="css/OrgChartNode.css" rel="stylesheet"/>
+<link type="text/css" href="css/HaplessPath.css" rel="stylesheet"/>
+
+
+
+</head>
+<body onload="">
+<H1> HaplessPath </H1>
+<p>Welcome to Hapless Path, a pedagogical tool for learning basic XPath expressions.</p>
+
+<form>
+<label for="xml">To get started, first choose an XML file:</label>
+<select name="xml" id="xml" onChange="JavaScript:loadXML();return false;">
+    <option></option>
+    <option value="0">Very Simple XML </option>
+	<option value="1">Breakfast Menu</option>
+	<option value="2">Plant Catalog</option>
+	<option value="3">CD Catalog</option>
+	<!-- <option value="4">Courses</option> -->
+</select> <a style="text-decoration:none;border-bottom:none; color:black;" href="#" id="xmlLink" target="_blank"> [view xml] </a>
+<!--<span onclick="JavaScript:loadXML();return false;">Load XML</span><br />-->
+<br />
+<br />
+<label for="xpath">Then input an XPath Expression</label>
+<input type="text" name="xpath" id="xpath" onkeypress="return xpathChange(event)"/> 
+<a href="JavaScript:finalizeXPath();" style="text-decoration:none;border-bottom:none; color:black;">[Done]</a>
+<a href="JavaScript:reset();" style="text-decoration:none;border-bottom:none; color:black;">[Reset]</a>
+<div id="xpathquery" class="XPath Query">
+	<span id="establishedtokens"></span>
+	<span id="tokeninprogress"></span>
+</div>
+<br />
+<div id="orgchartHolder" >
+	
+</div>
+</form>
+</body>
+</html>

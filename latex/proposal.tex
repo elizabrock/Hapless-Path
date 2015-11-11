@@ -1,0 +1,166 @@
+\documentclass[12pt,letterpaper,final]{article}
+\usepackage{url}
+%\usepackage{fullpage}
+\begin{document}
+%\oddsidemargin 0.25in 
+%\textwidth 6.0in 
+\title{Project Proposal and Literature Review}
+\author{Eliza Brock}
+\date{\today}
+\maketitle
+\tableofcontents
+\newpage
+\section{XPath Evaluator Project Proposal}
+\subsection{Objectives:}
+\paragraph{}The primary objective of the XPath Evaluator is to serve as a pedagogical tool to illustrate the basic principles of querying XML using XPath.  
+\paragraph{}
+The XPath Evaluator will be used to make visual connections between sections of the XPath query and XML elements that are selected by the queries.  It will generate a dynamic visual representation of XML data and XPath expressions in order to represent the effect of each individual XPath subquery on the transaction as a whole. The idea is to allow students to understand the results of each portion of their XPath query as it is evaluated, thus preventing some of the confusion surrounding the basic question of ``How did these results happen?''
+
+\paragraph{}
+The project will be accomplished using a Haskell based server process, and an ajax/javascript driven browser interface.  See Table \ref{browser-interaction} for details on the proposed client-browser interaction.  Using a web browser as the main interface will make the project more accessible to learners and usable from anywhere.
+
+\paragraph{Client}
+On the client side, the user will be able to select an XML document, and input an XPath expression in order to see the results of the query evaluation. The goal is for these interactions to be dynamic and fluid, such that the interactions between user, browser, and server are near real-time.  With near real-time interactions, the browser and server will be able to collaborate to show the most current results of query evaluation as each sub-expression is completed.
+\paragraph{}
+Portions of the HTML-based UI will be sourced from open source projects, in order to minimize time spent on basic client-side functionality.
+
+\paragraph{Server}
+On  the server side, the XML will be parsed into a form suitable for use by the server process and will then be divided via the various XPath sub-expressions.  At the request of the client, the server will send information about the entire XML document (for display by the client) and the results of various XPath sub-expressions.
+
+\paragraph{Planned Implementation of the XPath Standard:}
+The portions of the XPath standard that I intend to implement are:
+\begin{itemize}
+\item Location Steps, including axes and node tests
+\item Predicates
+\item Standard operators\protect\footnote{As shown at: \url{http://www.w3schools.com/xpath/xpath_operators.asp}} , excluding `` $|$ ''
+\item Portions of the core library, as time permits.  The implementation of the core library will focus on the following common functions:
+	\begin{itemize}
+	\item position
+	\item count
+	\item last
+	\item first
+	\item contains
+	\item name
+	\item local-name
+	\end{itemize}
+\end{itemize}
+
+
+
+
+
+\begin{table}[!htpb]
+\caption{Proposed Workflow}
+\label{browser-interaction}
+\centering
+\begin{tabular*}{\textwidth}{p{.45\textwidth} | p{.45\textwidth}}
+\textbf{Client}					&	\textbf{Server}\\
+\hline
+\hline
+Requests page					&	\\
+\hline
+								&	Server sends page\\
+\hline
+User selects XML file to use	&	\\
+\hline
+								&	Graphical representation of the XML is generated \\
+\hline
+User inputs XPath, which is sent to the server on a per-token basis & \\
+\hline
+								& Identifiers of elements selected by individual
+ sub-expression are returned to the client \\
+\hline The browser highlights the elements and corresponding sub-expressions & \\
+\end{tabular*}
+\end{table}
+
+
+
+
+
+
+
+
+
+\subsection{Options for Further Work:}
+\paragraph{}
+Additional work on this project, apart from the basic features outlined above could include any of the following:
+\begin{itemize}
+\item Calculating the XPath expression whose result would be a given set of nodes.\protect\footnote{This could be a corollary to the functionality provided for regular expressions at: \url{http://www.txt2re.com/?s=29:Mar:2008\%20\%22This\%20is\%20an\%20Example!\%22&-19}}
+\item Implementing the full XPath standard
+\item Determining whether a query that returns no results for a given XML document could be satisfiable given the document's DTD.
+\end{itemize}
+
+\section{Team \& Organizational Plan}
+\subsection{Group Organization}
+\begin{tabular}{|l|l|}
+\hline
+Name		&	Task/Role \\
+\hline
+Eliza Brock &	Jack-of-all-Trades \\
+\hline
+\end{tabular}
+\subsection{Major Tasks}
+\begin{enumerate}
+\item XML Parsing
+	\begin{enumerate}
+	\item Parse XML
+	\item Transform XML into convenient data structure
+	\end{enumerate}	
+\item XPath Parsing
+	\begin{enumerate}
+	\item Allow users to specify query
+	\item Search XML based on XPath query
+	\item (if time allows) An item selected from Section 1.2
+	\end{enumerate}	
+\item	Browser Interaction
+	\begin{enumerate}
+	\item 	Specify XML to use
+	\item 	Display XML in visual form
+	\item 	Connections between XPath and XML elements
+	\end{enumerate}	
+\item	Paperwork
+	\begin{enumerate}
+	\item 	Project Proposal (Wk. 5)
+	\item 	Milestone Report (Wk. 6)
+	\item 	Status Report (Wk. 8)
+	\item 	Final Report (Wk. 10)
+	\item 	Research Paper (Wk. 10)
+	\item 	Final Code (Wk.10)
+	\end{enumerate}	
+\end{enumerate}
+\subsection{Proposed Timeline}
+
+\begin{table}[!htpb]
+\centering
+\begin{tabular*}{\textwidth}{l|l|l}
+
+Week 	& Goals [Tasks] 					& Deadlines [Tasks]\\
+\hline
+\hline
+4.5th	& Templates of all reports [4*] 				& \\
+ 		& Finding suitable XML with DTDs [1*]	& \\
+\hline
+5th		& Parsing XML into datastructure [1a, 1b]		& \\
+		& Parsing XPath by token [2a]	& Project Proposal [4a]\\
+\hline
+6th		& Visual display of XML elements [3a, 3b]	&	Literature/Design [4b]\\
+\hline
+7th		& Connect XPath \& XML [2b, 3c] 	& \\
+\hline
+8th		& \emph{Margin of Error}								& Status Report [4c]\\
+		&												& Project Demonstration\\
+\hline
+9th		& Final features[2c]			& \\
+\hline
+10th	& \emph{Margin of Error}							& Project Delivery[4d-f]\\
+		&												& Project Demonstration \\
+\hline
+\end{tabular*}
+\end{table}
+
+\nocite{*}
+\renewcommand\refname{\section{Initial Reference List}}
+\bibliographystyle{acm}
+\bibliography{uno}
+
+\end{document}

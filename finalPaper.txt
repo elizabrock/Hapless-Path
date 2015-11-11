@@ -1,0 +1,8 @@
+no nested functions, no xsl (i.e. variable names)
+
+no processing instructions
+
+no namespaces
+
+no punctuation in names
+

@@ -1,0 +1,138 @@
+\documentclass{beamer}
+\mode<presentation>{} 
+\title{Hapless Path XPath Evaluator}
+\author{Eliza Brock}
+\date{\today}
+%\includeonlyframes{current}
+\AtBeginSection[]{} % for optional outline or other recurrent slide
+\mode<presentation>
+{ \usetheme{Malmoe} }
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+\frametitle{Premise}
+Pedagogical tool to illustrate the basic principles of querying XML using XPath. 
+\begin{itemize}
+\pause
+\item Browser based
+\pause
+\item Dynamic visualization based on sub-queries
+\pause
+\item Written in Haskell
+\end{itemize}
+\end{frame}
+
+\section{Approach}
+\begin{frame}
+\frametitle{Tools}
+\begin{description}
+\item[HAppS] ``Haskell Application Server'' Features auto recompilation, optional state storage, and is designed for the "pattern of developing static web pages and using AJAX to populate them with dynamic content"
+\pause
+\item[Parsec] ``industrial strength, monadic parser combinator library for Haskell. '' \cite{parsec} i.e. entirely bad-ass library to facilitate writing parsers in Haskell.
+\pause
+\item[AJAX] XMLHttpRequest. Magic.
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{Workflow}
+\begin{tabular*}{\textwidth}{p{.45\textwidth} | p{.45\textwidth}}
+\textbf{Client}					&	\textbf{Server}\\
+\hline
+\hline
+User selects XML file to use	&	\\
+\hline
+								&	Graphical representation of the XML is generated \\
+\hline
+User inputs XPath, which is sent to the server on a per-token basis & \\
+\hline
+								& Identifiers of elements selected by individual
+ subexpression are returned to the client \\
+\hline The browser highlights the \\
+elements and corresponding expressions & \\
+\end{tabular*}
+%\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Approach}
+
+\begin{itemize}
+\item 3 pass approach
+	\begin{enumerate}
+	\item Parse XML
+	\item Parse XPath
+	\item Evaluate them together
+	\end{enumerate}
+\pause
+\item Not as bad as it sounds
+	\begin{itemize}
+	\item Haskell is lazy
+	\item Haskell remembers things
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Research}
+\begin{frame}
+\frametitle{Papers/Resources}
+% I read a lot of papers...\\
+% It was really quite sad.\\
+% The ones I actually referenced were:
+
+\nocite{parsec}
+\nocite{xmlspec}
+\nocite{xpathspec}
+\nocite{designandimplement}
+\nocite{xpathtokenizer}
+%\renewcommand\refname{\section{Papers/Resources I plan to review }}
+%\bibliographystyle{acm}
+\bibliographystyle{plain} 
+\bibliography{uno}
+\end{frame}
+
+\section{Results}
+
+\begin{frame}
+\frametitle{Implemented Features}
+
+\begin{itemize}
+\item XML
+	\begin{itemize}
+	\item elements with children
+	\item empty elements
+	\item comments
+	\item doctype declarations
+	\item mixed content
+	\item attributes
+	\end{itemize}
+\pause
+\item XPath
+	\begin{itemize}
+	\item 	abbreviated location paths (except  //)
+	\item function calls
+	\item predicates
+	\end{itemize}
+\pause
+\item Evaluation
+\begin{itemize}
+	\item location steps
+	\item predicate tests
+	\item a subset of the function calls that result in nodes or node-sets
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Demo}
+\begin{frame}
+\frametitle{Demonstration}
+
+\end{frame}
+\end{document}
+
+

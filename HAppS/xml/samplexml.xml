@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE myfile>
+<myfile>
+	<!-- Sample comment -->
+	<subbranch>Sample XML element</subbranch>
+	<longsubbranch>Sample XML element containing a lot of text, enough to be put on a separate line.</longsubbranch>
+	<parentofmany attribute="value" otherattribute="other&lt;value&gt;">
+		<child>matters not</child>
+		<child>matters not</child>
+	</parentofmany>
+	<parentofmany>
+		<child><![CDATA[ Contents of <CDATA> block ]]></child>
+		<child><underchild>matters not</underchild></child>
+	</parentofmany>
+</myfile>

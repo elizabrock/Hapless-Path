@@ -1,0 +1,30 @@
+
+"checks whether or not an XPath query Q conforms to the structure, semantics, data type and occurrence constraints in a given XML schema definition S by evaluating Q on S rather than the instance documents of S. If Q does not conform to the constraints of S, Q cannot be evaluated completely on S, and thus Q is unsatisfiable."\cite{groppe:filtering}
+
+
+\subsection{XPath Axes}
+child - covered by mini-DOM
+parent - covered by mini-DOM
+descendant - covered by range labeling + indexing
+ancestor - covered by range labeling +indexing
+followingsibling  - covered by range labeling in conjunction with mini-DOM (e.g. all children of your parent whose range is greater than your own)
+precedingsibling - covered by range labeling in conjunction with mini-DOM (e.g. all children of your parent whose range is lesser than your own)
+following - range labeling (all nodes whose range does not intersect with yours and is greater than your own)
+preceding - range labeling (all nodes whose range does not intersect with yours and is lesser than your own)
+descendant-or-self, 
+ancestor-or-self, 
+self, 
+attribute and 
+namespace.
+
+
+	I researched the possible Haskell servers, etc and...  (cite me: \url{http://www.haskell.org/haskellwiki/Applications_and_libraries/Web_programming#Web_servers})
+
+
+
+HaXML does XML validation: http://www.cs.york.ac.uk/fp/HaXml/
+
+
+
+
+Design and Implementation of a validating XML parser in Haskell - Master's Thesis - http://www.ninebynine.org/Software/HaskellUtils/HXmlToolbox-3.01/doc/thesis/

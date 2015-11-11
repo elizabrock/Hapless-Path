@@ -1,0 +1,17 @@
+Implementation Report:
+
+
+Installing HAppS:
+Requires darcs, wget, curl, libintl, sp, and tar
+# darcs get http://happs.org/repos/happs.org Hapless
+# cd Hapless
+# sp ghc -isrc src/Main.hs --make --run --http-port=5000 
+
+-- requires hslogger, polyparse, HaXml, 
+
+
+
+
+??Streaming algorithms \cite{barton:streaming} sound really interesting.  However, given the slightly-stateful, mostly-synchronous nature of the project's XPath processing I'm not sure that streaming algorithms work in this context.  
+
+??I'm certain that the streaming algorithms that work with backward axes wouldn't work with the "sub-expression at a time" approach that I plan on taking.  However, it would be very interesting to use forward-axis only streaming processing. 

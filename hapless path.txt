@@ -1,0 +1,21 @@
+ future work: use monads and state to take full advantage of functional language
+
+request xpathtopoint docname receive list of ids css#id.color = query.color
+
+larger function list
+
+id scheme	begins-with ances
+
+optimization- remembers results of previous exec
+
+pass in orig xml
+	ancestorOf   idofdesc nodename
+	descendantOf idances  nodename
+
+
+pass xml req subquery id then all xml ids get that applied to them
+
+colors apply to parent table
+
+make text bigger/look better
+

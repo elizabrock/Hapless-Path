@@ -1,0 +1,107 @@
+/* 
+	OrgChartNode.css - a javascript library for making organization charts
+	Css resource
+	
+	Copyright (C) 2007  Roland Bouman http://rpbouman.blogspot.com/
+	web: http://www.xcdsql.org/OrgChart/ 
+	email: Roland.Bouman@gmail.com
+	
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
+	
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	Lesser General Public License for more details.
+	
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+.CSS_VSTICKS{
+	height:0.75cm;
+}
+
+.CSS_VSTICKR{
+	border-right-style:solid;
+	border-right-width:1px;
+	border-right-color:black;
+}
+
+.CSS_VSTICKL{
+	border-left-style:solid;
+	border-left-width:1px;
+	border-left-color:black;
+}
+
+.CSS_HSTICK{
+	border-top-style:solid;
+	border-top-width:2px;
+	border-top-color:black;
+}
+
+.CSS_SPACER{
+	width:100%;
+}
+.CSS_FLANK{
+	width:50%;
+}
+
+.CSS_NODE_BODY_SPACE{
+	width:2px;
+	height:1.5cm;
+	background-color:black;
+	margin-left:0.1cm;
+	margin-right:0.1cm;
+}
+
+td.CSS_NODE_BODY_CONTAINER{
+	text-align:center;
+}
+table.CSS_NODE_BODY{
+	display:inline-table;
+	border-style:solid;
+	border-width:1px;
+	border-color:black;
+	width:3cm;
+	height:1.5cm;
+	font-family:Verdana;
+	font-size:8pt;
+	background-color:rgb(220,220,220);
+	margin-left:0.1cm;
+	margin-right:0.1cm;
+}
+
+.CSS_NODE_BODY_LABEL{
+	text-align:center;
+	vertical-align:middle;
+}
+
+tr.CSS_NODE_BODY_CHILDREN{
+	height:1em;
+}
+
+td.CSS_NODE_BODY_CHILDREN{
+}
+
+.CSS_NODE_BODY_CHILDREN_SWITCH{
+	cursor:pointer;
+	font-family:Monospace;
+	width:0%;
+	text-align:left;
+}
+
+.CSS_NODE_BODY_CHILDREN_COUNT{
+	width:100%;
+	text-align:left;
+}
+
+.CSS_NODE_CHILDREN{
+	width:100%;
+}
+
+.CSS_NODE_CHILD{
+	vertical-align:top;
+}

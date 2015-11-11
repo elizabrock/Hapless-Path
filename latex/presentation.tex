@@ -1,0 +1,135 @@
+\documentclass{beamer}
+\mode<presentation>{} 
+\title{Project Proposal}
+\author{Eliza Brock}
+\date{\today}
+%\includeonlyframes{current}
+\AtBeginSection[]{} % for optional outline or other recurrent slide
+\mode<presentation>
+{ \usetheme{Malmoe} }
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+\frametitle{Background}
+This project comes from the list of project ideas from the course syllabus:
+\begin{quote}
+XPath Evaluator: This will be a pedagogical tool aimed at helping students
+understand the use of XPath. The objective of the project will be to develop a stand
+tool that can be integrated with a web browser to evaluate XPath Expressions.
+\end{quote}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Goal}
+%\begin{description} \item[Goal]... to teach! \end{description}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Introduction to the Project}
+\begin{itemize}
+\item Pedagogical tool
+\pause
+\item Dynamic visualization of XPath queries
+%\item The primary objective of the XPath Evaluator is to serve as a pedagogical tool to illustrate the basic principles of querying XML using XPath.  
+%\item It will generate a dynamic visual representation of XML data and XPath expressions in order to represent the effect of each individual XPath subquery on the transaction as a whole.
+\pause
+\item It will be badass.
+\end{itemize}
+\end{frame}
+
+\section{Approach}
+\begin{frame}
+\frametitle{Approach}
+%It's drawing on the board time!!!
+%\begin{table}[!htpb]
+%\caption{Proposed Workflow}
+%\label{browser-interaction}
+%\centering
+\begin{tabular*}{\textwidth}{p{.45\textwidth} | p{.45\textwidth}}
+\textbf{Client}					&	\textbf{Server}\\
+\hline
+\hline
+User selects XML file to use	&	\\
+\hline
+								&	Graphical representation of the XML is generated \\
+\hline
+User inputs XPath, which is sent to the server on a per-token basis & \\
+\hline
+								& Identifiers of elements selected by individual
+ subexpression are returned to the client \\
+\hline The browser highlights the elements and corresponding expressions & \\
+\end{tabular*}
+%\end{table}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Exclusions}
+What is not included in my project? Well...
+\begin{itemize}
+\item The parts of XPath that I think are 
+\begin{itemize}
+\item (a) not that useful and
+\item (b) a pain to implement.
+\end{itemize}
+\item Anything else that I think a proper academic wouldn't do. \\ For example:
+\begin{itemize}
+\item Cross browser support
+\item Q.A.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\section{Resources}
+\begin{frame}
+\frametitle{Papers/Resources}
+I plan to read a lot of papers...\\
+They wouldn't all fit on here, so here are my favorites: 
+\nocite{chen:indexing}
+\nocite{benedikt:structural}
+\nocite{scardina:building}
+%\renewcommand\refname{\section{Papers/Resources I plan to review }}
+%\bibliographystyle{acm}
+\bibliographystyle{plain} 
+\bibliography{uno}
+\end{frame}
+
+
+\section{Timeline}
+\begin{frame}
+\frametitle{Timeline}
+\begin{tabular}{l|l}
+Week 	& Goals [Tasks] 							\\	
+\hline
+\hline
+4.5th	& Templates of reports 			\\
+ 		& Finding suitable XML with DTDs 		\\
+\hline
+5th		& Parsing XML into datastructure \\
+		& Parsing XPath by token 			\\
+\hline
+6th		& Visual display of XML elements 	\\
+\hline
+7th		& Connect XPath \& XML 			\\
+\hline
+8th		& \emph{Margin of Error}							\\
+\hline
+9th		& Final features					\\
+\hline
+10th	& \emph{Margin of Error}							\\
+\hline
+\end{tabular}
+\end{frame}
+
+
+\end{document}
+
+
