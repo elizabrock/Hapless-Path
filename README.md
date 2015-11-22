@@ -77,8 +77,12 @@ Installation Order, with dependencies noted:
 
 ### Compiling the Server
 
-???
+1. `ghc -isrc src/Main.hs --make -o main`
 
 ### Running the Server
 
-???
+1. `./main`
+2. Visit localhost:8000
+
+
+P.S. Turns out Main.exe is actually a linux executable, but the tutorials from the way-back used Main.exe, so I did too o.O
