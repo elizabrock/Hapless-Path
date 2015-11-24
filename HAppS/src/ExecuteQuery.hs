@@ -57,7 +57,6 @@ getID (Element id _ _ _) = id
 getID (CharData id _) = id
 getID (RootElement elem) = getID elem
 
-
 --assertEqual :: (Eq a, Show a) => String -> a -> a -> IO ()
 assertEqual :: String -> String -> [XMLElement] -> IO()
 assertEqual msg expected actual
@@ -142,8 +141,6 @@ elemsNamed name (elem:elems) =  if isNamed name elem
                                 else (elemsNamed name elems)
                                         where   isNamed name (Element id named attrs children) = name == named
                                                 isNamed name elem = False
-
-
 
 childrenOf :: [XMLElement] -> [XMLElement]
 childrenOf [] = []

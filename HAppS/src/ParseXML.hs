@@ -164,7 +164,6 @@ fullElement parentId myPartID= do{
         ; return $ Element (parentId++(show myPartID)++".") name attrs children
         } <?> "element"
 
-
 notFollowedByEnd  = try (do{ c <- string "</"; unexpected (show [c]) }
                        <|> return ()
                        )
@@ -200,12 +199,8 @@ endTag name = do{
         ;return []
         }<?> "end tag for element "++name
 
-
-
 notElement :: Parser ()
 notElement = (try comment) <|> do{ s; return()}
-
-
 
 --EmptyElemTag ::= '<' Name (S Attribute)* S? '/>'
 emptyElemTag :: String -> Int -> Parser XMLElement
@@ -238,7 +233,7 @@ prolog = do{ a <- try xmlDecl
         } <?> "xml prolog"
 
 --Misc ::= Comment | PI |  S
--- no PI support
+-- Note: no PI support
 misc :: Parser ()
 misc = do{
     try(comment)
@@ -252,7 +247,7 @@ simpleComment = do{ string "<!--"
         ; manyTill anyChar (try (string "-->"))
         }-}
 --Comment ::= '<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
--- doesn't allow any non-comment ending dashes.
+-- Note: doesn't allow any non-comment ending dashes.
 comment :: Parser ()
 comment = do{ string "<!--"
         ; many (noneOf "-")
@@ -270,7 +265,7 @@ xmlDecl :: Parser String
 xmlDecl = do{ string "<?xml"
         ; a <- versionInfo
         ; b <- try encodingDecl
-        -- ; try sdDecl
+        -- ; try sdDecl -- Not implemented
         ; s
         ; string "?>"
         ; return ("<?xml "++a++" "++b++" ?>")
@@ -323,5 +318,3 @@ versionNum = many1 (oneOf "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0
 --S ::= (#x20 | #x9 | #xD | #xA)+
 s :: Parser ()
 s = spaces
-
-
