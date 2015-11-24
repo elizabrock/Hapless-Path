@@ -1,9 +1,8 @@
 a{
-	text-decoration:none;
-	
-	
-	border-bottom:none;
+  text-decoration:none;
+  border-bottom:none;
 }
+
 .subquery{border-bottom: 3px solid black;}
 
 .subquery1{border-bottom-color: red;border-bottom-width: 3px;border-bottom-style: solid;}
@@ -15,5 +14,5 @@ a{
 .subquery7{border-bottom-color: black;border-bottom-width: 3px;border-bottom-style: solid;}
 
 #xpathquery{
-	fint-size: 200%;	
+  fint-size: 200%; /* I'm leaving this one for posterity ;) - 2015 Eliza */
 }

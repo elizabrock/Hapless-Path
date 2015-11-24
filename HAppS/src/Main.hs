@@ -20,13 +20,13 @@ impl = [
                      ,methodSP POST $ withDataFn fromXMLRequest processXML]
        ,fileServe ["index2.html","index.html","README.html","package-info.xml"] "public/"
        ]
-       
+
 
 fromXMLRequest = do file <- look "filename" `mplus` return "default.xml"
                     return a
 
 processXMLq (file) =
-  [anyRequest $ ok $ toResponse $ "User logged in with: " ++ show (file)] 
+  [anyRequest $ ok $ toResponse $ "User logged in with: " ++ show (file)]
        -}
 {-
 main = simpleHTTP nullConf {port=5000} [
@@ -41,11 +41,11 @@ main = simpleHTTP nullConf {port=5000} [
 -}
 
 {-parseFileToJS filename = do{
-	result <- parseFileForMe filename
-	; case (result) of
-		Left err -> show err
-		Right elem -> showElemJS elem
-	}-}
+        result <- parseFileForMe filename
+        ; case (result) of
+                Left err -> show err
+                Right elem -> showElemJS elem
+        }-}
 
 data NewUserInfo = NewUserInfo String String String
 
@@ -62,13 +62,13 @@ processNewUser (NewUserInfo user pass1 pass2)
 
 --creates data structure
 fromXMLRequest = do{ a <- look "xmlfile" `mplus` return "default.xml"
-		  ; return a
-		}
+                  ; return a
+                }
 
 --creates data structure
 fromXPATHRequest = do{ a <- look "xmlfile" `mplus` return "1"
                     ;  b <- look "query" `mplus` return ""
-		    ;  c <- look "querynum" `mplus` return "0"
+                    ;  c <- look "querynum" `mplus` return "0"
                     ;  return [a,b,c]
                 }
 --uses data structure
@@ -80,10 +80,10 @@ parseFileForMe name = name
 processXMLReq filenum = [anyRequest $ ok $ toResponse $ parseTestNumToJS filenum]--parseFileForMe filename]
 
 processXPATHReq [filenum, query, querynum] = [anyRequest $ ok $ toResponse $ evalWith querynum query filenum ]--parseFileForMe filename]
-  
+
 impl = [ dir "xmljs" [methodSP GET $ withDataFn fromXMLRequest processXMLReq],
         dir "xpath" [methodSP GET $ withDataFn fromXPATHRequest processXPATHReq]
---	 dir "xml" [methodSP GET $ (fileServe ["public/index.html"] ".")
+--      dir "xml" [methodSP GET $ (fileServe ["public/index.html"] ".")
 --                   ,methodSP POST $ withDataFn fromLoginRequest processLogin]
        , dir "newuser" [methodSP POST $ withData processNewUser]
        , fileServe ["index.html","README.html","package-info.xml"] "public/"

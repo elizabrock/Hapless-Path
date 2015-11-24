@@ -3,44 +3,44 @@ import ParseXML (XMLElement(..), parseTestToElem, parseTestNumToElem)
 import ParseXPath (XPath(..), xpath, xpathTest)
 
 ------------------------------------------------------------------
---data XMLElement = Attr String String String			--
---	| Element String String [XMLElement] [XMLElement]	--
---	| RootElement XMLElement				--
---	| CharData String String				--
+--data XMLElement = Attr String String String                   --
+--      | Element String String [XMLElement] [XMLElement]       --
+--      | RootElement XMLElement                                --
+--      | CharData String String                                --
 ------------------------------------------------------------------
 
 ----------------------------------------------------------
---data XPath = StartExpr XPath				--
---	| LocationStep String 		XPath		--
---	| PredicateTest XPath 		XPath		--
---	| FunctionCall String [XPath] 	XPath		--
---	| Expression XPath String XPath			--
---	| Literal String				--
---	| EndOfExpr					--
+--data XPath = StartExpr XPath                          --
+--      | LocationStep String           XPath           --
+--      | PredicateTest XPath           XPath           --
+--      | FunctionCall String [XPath]   XPath           --
+--      | Expression XPath String XPath                 --
+--      | Literal String                                --
+--      | EndOfExpr                                     --
 ----------------------------------------------------------
 
 testEval query = evaluateQuery (xpath query) ((parseTestToElem):[])
 --test :: IO ()
 test = do
-    assertEqual "(xpath \"/CATALOG\")" 		"[<CATALOG>...</CATALOG>]" 			(testEval "/CATALOG")
-    assertEqual "(xpath \"/CATALOG\")" 		"[<CATALOG>...</CATALOG>]" 			(testEval "/CATALOG/")
-    assertEqual "(testEval \"/CATALOG/PLANT\")" "[<PLANT>...</PLANT>,<PLANT>...</PLANT>]" 	(testEval "/CATALOG/PLANT")
-    -- assertEqual "(testEval \"/CATALOG/last()\")" "[<PLANT>...</PLANT>]" 	(testEval "/CATALOG/last()") --should return error
-    assertEqual "(testEval \"/CATALOG[last()]\")" "[<CATALOG>...</CATALOG>]" 	(testEval "/CATALOG[last()]")
-    assertEqual "(testEval \"/CATALOG/PLANT[last()]\")" "[<PLANT>...</PLANT>]" 	(testEval "/CATALOG/PLANT[last()]") --bad test case (incorrect/hard to tell on the answer)
-    assertEqual "(testEval \"/CATALOG[last()]/PLANT\")" "[<PLANT>...</PLANT>,<PLANT>...</PLANT>]" 	(testEval "/CATALOG[last()]/PLANT")
-    
+    assertEqual "(xpath \"/CATALOG\")"          "[<CATALOG>...</CATALOG>]"                      (testEval "/CATALOG")
+    assertEqual "(xpath \"/CATALOG\")"          "[<CATALOG>...</CATALOG>]"                      (testEval "/CATALOG/")
+    assertEqual "(testEval \"/CATALOG/PLANT\")" "[<PLANT>...</PLANT>,<PLANT>...</PLANT>]"       (testEval "/CATALOG/PLANT")
+    -- assertEqual "(testEval \"/CATALOG/last()\")" "[<PLANT>...</PLANT>]"      (testEval "/CATALOG/last()") --should return error
+    assertEqual "(testEval \"/CATALOG[last()]\")" "[<CATALOG>...</CATALOG>]"    (testEval "/CATALOG[last()]")
+    assertEqual "(testEval \"/CATALOG/PLANT[last()]\")" "[<PLANT>...</PLANT>]"  (testEval "/CATALOG/PLANT[last()]") --bad test case (incorrect/hard to tell on the answer)
+    assertEqual "(testEval \"/CATALOG[last()]/PLANT\")" "[<PLANT>...</PLANT>,<PLANT>...</PLANT>]"       (testEval "/CATALOG[last()]/PLANT")
+
     return ()
-    
+
 commaSeperate [] = []
 commaSeperate (c:[]) = "\""++c++"\""
 commaSeperate (c:cs) = ("\""++c++"\", "++commaSeperate(cs))
 
 -- data Result = NodeSet [String]
-	-- | Number Float
-	-- | Str String
-	-- | Boolean Bool
-	
+        -- | Number Float
+        -- | Str String
+        -- | Boolean Bool
+
 evalWith querynum query filenum = makeJSCommand querynum $ getIDs $ evaluateQuery (xpath query) ((parseTestNumToElem filenum):[])
 --evalWith querynum query filenum = "alert(" ++ (show $ evaluateQuery (xpath query) ((parseTestNumToElem filenum):[])) ++ ")"
 
@@ -57,10 +57,10 @@ getID (Element id _ _ _) = id
 getID (CharData id _) = id
 getID (RootElement elem) = getID elem
 
-    
+
 --assertEqual :: (Eq a, Show a) => String -> a -> a -> IO ()
 assertEqual :: String -> String -> [XMLElement] -> IO()
-assertEqual msg expected actual 
+assertEqual msg expected actual
     | expected == (show actual) = return ()
     | otherwise = do
                     putStrLn (show msg ++ ", expected " ++ expected ++ ", got " ++ show actual)
@@ -81,7 +81,7 @@ evaluateQuery (Literal val) elems = []
 
 --test is either literal or opExpression
 passesTest test elems = evaluateQuery test elems -- elems
-		
+
 {------- FUNCTIONS ---------}
 applyFunction :: String -> [XPath] -> [XMLElement] -> [XMLElement]
 
@@ -124,24 +124,24 @@ round-}
 applyFunction name args elems = elems
 {------- OPERATORS ---------}
 applyOperator op left right elems = elems
-			{-do{ evall <- evaluateQuery left elems
-					; evalr <- evaluateQuery right elems
-					--apply op evall evalr
-					; return $ Str "applied operator "++op -}
-{-operator = try(string "<=") <|> try(string ">=") <|> try(string "=") <|> try(string "!=") 
-	<|> try(string "and") <|> try(string "or") <|> try(string "+") <|> try(string "-") 
-	<|> try(string "div") <|> try(string "mod") <|> try(string "*") <|> try(string "|") 
-	<|> try(string "<") <|> try(string ">")  -}
+                        {-do{ evall <- evaluateQuery left elems
+                                        ; evalr <- evaluateQuery right elems
+                                        --apply op evall evalr
+                                        ; return $ Str "applied operator "++op -}
+{-operator = try(string "<=") <|> try(string ">=") <|> try(string "=") <|> try(string "!=")
+        <|> try(string "and") <|> try(string "or") <|> try(string "+") <|> try(string "-")
+        <|> try(string "div") <|> try(string "mod") <|> try(string "*") <|> try(string "|")
+        <|> try(string "<") <|> try(string ">")  -}
 
 {- ------ LOCATION STEPS -------- -}
 elemsNamed :: String -> [XMLElement] -> [XMLElement]
 --elemsNamed name elems = elems
 elemsNamed name [] = []
 elemsNamed name (elem:elems) =  if isNamed name elem
-			  	then (elem:(elemsNamed name elems))
-				else (elemsNamed name elems)
-					where   isNamed name (Element id named attrs children) = name == named
-						isNamed name elem = False
+                                then (elem:(elemsNamed name elems))
+                                else (elemsNamed name elems)
+                                        where   isNamed name (Element id named attrs children) = name == named
+                                                isNamed name elem = False
 
 
 
