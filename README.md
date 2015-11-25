@@ -16,8 +16,7 @@ I'm actually still trying to puzzle through getting HAppS to run, but it starts 
 00. Install Ubunutu 12.04 i386
 01. Install [libgmp.so.3](http://packages.ubuntu.com/precise/libgmp3c2)
   * `sudo apt-get install libgmp3c2`
-, as per [these instructions](http://unix.stackexchange.com/a/119948/19466). Then `cd /usr/local/lib/x86_64-linux-gnu`, `sudo ln -s /usr/lib/libgmp.so.3 libgmp.so`
-02. Install [GHC 6.10.1 x86_64](https://www.haskell.org/ghc/download_ghc_6_10_1), following the instructions in INSTALL.
+02. Install [GHC 6.10.1 i386 libedit2](https://www.haskell.org/ghc/download_ghc_6_10_1), following the instructions in INSTALL.
   01. `./configure`
   02. `sudo make install`
 03. Restart your terminal
